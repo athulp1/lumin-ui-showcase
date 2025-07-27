@@ -97,7 +97,7 @@ const InputsPage = () => {
           <GlowInput
             label="Email"
             type="email"
-            placeholder=""
+            placeholder="athul***96@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={formErrors.email}
