@@ -1,0 +1,93 @@
+/* src/index.css */
+
+/* Define our custom CSS variables for colors first */
+:root {
+  --color-primary-dark: #0A0A1F;    /* Very dark background, hint of blue/purple */
+  --color-secondary-dark: #1C0D30;  /* Slightly lighter dark for cards, sections */
+  --color-accent-light: #8A2BE2;    /* Bold violet/amethyst for highlights */
+  --color-accent-dark: #5D2E8E;     /* Deeper violet for dark accents */
+  --color-text-light: #E0E0E0;      /* Light gray for general text */
+  --color-text-muted: #A0A0A0;      /* Muted gray for secondary text */
+  --color-gradient-start: #4A0080; /* Deep purple for gradients */
+  --color-gradient-end: #00004C;   /* Very dark blue for gradients */
+}
+
+/* Tailwind CSS directives - essential for Tailwind to work */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Body & HTML styles for our premium, animated look */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* Use our CSS variables for the animated background gradient */
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-primary-dark), var(--color-gradient-end));
+  background-size: 400% 400%; /* For subtle animation */
+  animation: gradientBG 15s ease infinite; /* Apply background animation */
+  color: var(--color-text-light); /* Default text color from our vars */
+  font-family: 'Inter', sans-serif; /* Our custom font (imported in index.html soon) */
+  -webkit-font-smoothing: antialiased; /* For smoother font rendering */
+  -moz-osx-font-smoothing: grayscale; /* For smoother font rendering */
+  overflow-x: hidden; /* Prevent horizontal scroll due to animations/gradients */
+}
+
+/* Keyframe animation for the subtle background gradient movement */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Keyframe animation for the glowing text effect on the main title */
+@keyframes gradient-text {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Class to apply the text gradient animation */
+.animate-gradient-text {
+  background-size: 200% auto; /* For the text gradient shimmer */
+  animation: gradient-text 3s ease-in-out infinite alternate;
+}
+
+/* Keyframe animation for subtle background "blob" shapes */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* Helper classes for staggering blob animations */
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Optionally, hide scrollbar for a cleaner look while keeping scroll functionality */
+body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, Opera */
+}
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
