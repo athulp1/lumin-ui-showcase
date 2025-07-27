@@ -1,6 +1,7 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react'; // <-- ADD THIS IMPORT FOR ANALYTICS
 //this is for nav bw diff pages like cards, aboutme , toast, modal
 
 
@@ -13,6 +14,7 @@ import ModalsPage from './pages/ModalsPage';
 import AccordionPage from './pages/AccordionPage';
 import ToastsPage from './pages/ToastsPage';
 import AboutMePage from './pages/AboutMePage'; // <-- ADD THIS LINE!
+
 
 // HomePage is currently our main landing page
 const HomePage = () => (
