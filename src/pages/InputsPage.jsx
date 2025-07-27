@@ -88,7 +88,7 @@ const InputsPage = () => {
         <form onSubmit={handleSubmit} className="w-full max-w-md space-y-6">
           <GlowInput
             label="Full Name"
-            placeholder="John Doe"
+            placeholder="Athul Ganapati Pujari"
             value={name} // Connect to state
             onChange={(e) => setName(e.target.value)} // Update state on change
             error={formErrors.name} // Display error if present
@@ -97,7 +97,7 @@ const InputsPage = () => {
           <GlowInput
             label="Email"
             type="email"
-            placeholder="example@domain.com"
+            placeholder=""
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={formErrors.email}
