@@ -2,9 +2,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react'; // <-- ADD THIS IMPORT FOR ANALYTICS
-//this is for nav bw diff pages like cards, aboutme , toast, modal
-
-
 
 // Import our component showcase pages
 import ButtonsPage from './pages/ButtonsPage';
@@ -13,8 +10,7 @@ import CardsPage from './pages/CardsPage';
 import ModalsPage from './pages/ModalsPage';
 import AccordionPage from './pages/AccordionPage';
 import ToastsPage from './pages/ToastsPage';
-import AboutMePage from './pages/AboutMePage'; // <-- ADD THIS LINE!
-
+import AboutMePage from './pages/AboutMePage';
 
 // HomePage is currently our main landing page
 const HomePage = () => (
@@ -37,8 +33,11 @@ const HomePage = () => (
       <NavLink to="/accordions" className="inline-block bg-accent-light text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
         Explore Accordions
       </NavLink>
+      <NavLink to="/toasts" className="inline-block bg-accent-light text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
+        Explore Toasts
+      </NavLink>
       <NavLink to="/about" className="inline-block bg-accent-light text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-opacity-90 transition-colors duration-300">
-        About Me {/* <-- ADD THIS NavLink */}
+        About Me
       </NavLink>
     </div>
   </div>
@@ -134,7 +133,19 @@ function App() {
                 Accordions
               </NavLink>
             </li>
-            <li> {/* <-- ADD THIS NavLink for About Me Page */}
+            <li>
+              <NavLink
+                to="/toasts"
+                className={({ isActive }) =>
+                  `text-lg font-medium transition-colors duration-200 ${
+                    isActive ? 'text-accent-light border-b-2 border-accent-light' : 'text-text-light hover:text-accent-light'
+                  }`
+                }
+              >
+                Toasts
+              </NavLink>
+            </li>
+            <li>
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
@@ -146,7 +157,6 @@ function App() {
                 About Me
               </NavLink>
             </li>
-            {/* Add more NavLinks for future components here */}
           </ul>
         </nav>
 
@@ -160,15 +170,16 @@ function App() {
             <Route path="/modals" element={<ModalsPage />} />
             <Route path="/accordions" element={<AccordionPage />} />
             <Route path="/toasts" element={<ToastsPage />} />
-            <Route path="/about" element={<AboutMePage />} /> {/* <-- ADD THIS ROUTE! */}
+            <Route path="/about" element={<AboutMePage />} />
           </Routes>
         </main>
-                {/*if ur confusing in routes, route, navlink just see the example of tv, remote and decoderBox
-                here, the remote is navlink navlink consist the links of differtant pages like c1,chan2 ,c3 like this
-                but in the tv when u press on remote chan2 how tv understood that ok i wnat to show chan2 ???
-                here, decoder box comes , what decoderbox it has collection channels (collection of routes)
-                when u send the url/link fromm navlink routes will compare it from rout and tells to the main page ok u need to go to the this paage like this 
-                */ }
+
+        {/* Project Footer */}
+        <footer className="w-full max-w-7xl mt-20 py-8 text-center text-text-muted text-sm relative z-10">
+          <p>&copy; {new Date().getFullYear()} Lumin UI. Built with React, Tailwind CSS, and Framer Motion by Athul Ganapati Pujari.</p>
+          <p className="mt-2">For educational purposes and portfolio showcase.</p>
+        </footer>
+
 
         {/* Subtle overlay or shapes */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
@@ -176,14 +187,12 @@ function App() {
           <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
           <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
         </div>
+
+        {/* Vercel Analytics Component */}
+        <Analytics /> {/* <-- ADD THIS COMPONENT */}
       </div>
     </Router>
   );
 }
 
 export default App;
-
-
-
-
-//
